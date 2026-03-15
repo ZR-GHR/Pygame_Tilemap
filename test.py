@@ -1,3 +1,4 @@
-name = 'Tom'
 age  = -4
-print(f'Hello, {name}, you are {age} years old')
+print(f'Hello, Tom, you are -4 years old')
+
+print('New')

@@ -45,7 +45,7 @@ while runnig:
         if event.type == pg.MOUSEBUTTONUP:
             mouse_pressed = False
 
-            
+
     if mouse_pressed:
         mouse_buttons = pg.mouse.get_pressed()
         mouse_pos = pg.mouse.get_pos()
@@ -54,3 +54,17 @@ while runnig:
             editor.handle_click(*mouse_pos, 1)
         elif mouse_buttons[2]:
             editor.handle_click(*mouse_pos, 3)
+    
+    screen.fill((30, 30, 40))
+
+    pg.draw.rect(screen, (20, 20, 30), (0, 0, 150, 600))
+
+    map_surface = pg.Surface((640, 480))
+    editor.draw(map_surface)
+    screen.blit(map_surface, (editor.offset_x, editor.offset_y))
+
+    editor.draw_ui(screen)
+
+    pg.display.flip()
+
+pg.quit()

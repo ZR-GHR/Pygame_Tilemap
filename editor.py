@@ -37,3 +37,10 @@ while runnig:
                 editor.save_to_file("tilemap.json")
             elif event.key == pg.K_l:
                 editor.load_from_file("tilemap.json")
+        
+        if event.type == pg.MOUSEBUTTONDOWN:
+            mouse_pressed = True
+            editor.handle_click(*event.pos, event.button)
+        
+        if event.type == pg.MOUSEBUTTONUP:
+            mouse_pressed = False

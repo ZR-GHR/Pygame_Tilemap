@@ -10,7 +10,7 @@ editor = TileEditor(width = 20, height = 15, tile_size = 32)
 
 editor.load_from_file('tilemap.json')
 
-mouse_presssed = False
+mouse_pressed = False
 
 runnig = True
 while runnig:
@@ -44,3 +44,13 @@ while runnig:
         
         if event.type == pg.MOUSEBUTTONUP:
             mouse_pressed = False
+
+            
+    if mouse_pressed:
+        mouse_buttons = pg.mouse.get_pressed()
+        mouse_pos = pg.mouse.get_pos()
+
+        if mouse_buttons[0]:
+            editor.handle_click(*mouse_pos, 1)
+        elif mouse_buttons[2]:
+            editor.handle_click(*mouse_pos, 3)

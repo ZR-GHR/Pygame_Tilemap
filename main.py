@@ -51,3 +51,10 @@ except FileNotFoundError:
         
         keys = pg.key.get_pressed()
         player.update(dt, keys, tilemap)
+
+        camera_x = player.x + player.width / 2 - 400
+        camera_y = player.y + player.height / 2 - 300
+
+        # ограничиваем камеру границами картами
+        camera_x = max(0, min(camera_x, tilemap.width * tilemap.tile_size - 800))
+        camera_y = max(0, min(camera_y, tilemap.height * tilemap.tile_size - 600))

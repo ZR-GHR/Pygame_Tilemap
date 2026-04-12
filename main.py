@@ -41,5 +41,10 @@ except FileNotFoundError:
     while running:
         dr = clock.tick(60) / 1000.0
 
-        for event in pg.event.type == pg.QUIT:
-            running = False
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                running = False
+            
+            if event.tupe == pg.KEYDOWN:
+                if event.key == pg.K_r and not player.alive:
+                    player = Player(100, 300)

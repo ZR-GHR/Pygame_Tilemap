@@ -39,7 +39,7 @@ except FileNotFoundError:
 
     running = True
     while running:
-        dr = clock.tick(60) / 1000.0
+        dt = clock.tick(60) / 1000.0
 
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -48,3 +48,6 @@ except FileNotFoundError:
             if event.tupe == pg.KEYDOWN:
                 if event.key == pg.K_r and not player.alive:
                     player = Player(100, 300)
+        
+        keys = pg.key.get_pressed()
+        player.update(dt, keys, tilemap)
